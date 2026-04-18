@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofia Marín</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <nav>
+    <a class="nav-logo" href="#">Ayerim Parra</a>
+    <div class="nav-right">
+      <a href="#trabajo">Trabajo</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO  ·  100vh full-bleed video
+  ══════════════════════════════════════ -->
+  <section class="hero">
+
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-content">
+      <span class="hero-name">Ayerim<br>Parra</span>
+      <div class="hero-meta">
+        <span class="hero-role">Videógrafa &amp; Directora Visual · Madrid</span>
+        <a class="hero-cta" href="#contacto">Hablemos →</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line-indicator"></div>
+      <span>Scroll</span>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TRABAJO  ·  Asymmetric always-on grid
+  ══════════════════════════════════════ -->
+  <section id="trabajo">
+
+    <div class="section-bar">
+      <span class="section-label-text">Trabajo selecto</span>
+      <span class="section-label-text">06 — 2024 / 2025</span>
+    </div>
+
+    <div class="video-grid">
+
+      <!-- FEATURED (col ×2) -->
+      <div class="video-card featured">
+        <span class="card-index">01</span>
+        <video autoplay loop muted playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
+        </video>
+        <div class="card-overlay">
+          <div class="card-meta">
+            <p class="card-cat">Comercial</p>
+            <p class="card-title">Maison Éclat<br>Primavera 2025</p>
+            <p class="card-year">2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Normal -->
+      <div class="video-card">
+        <span class="card-index">02</span>
+        <video autoplay loop muted playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4" />
+        </video>
+        <div class="card-overlay">
+          <div class="card-meta">
+            <p class="card-cat">Documental</p>
+            <p class="card-title">Raíces</p>
+            <p class="card-year">2024</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Normal -->
+      <div class="video-card">
+        <span class="card-index">03</span>
+        <video autoplay loop muted playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4" />
+        </video>
+        <div class="card-overlay">
+          <div class="card-meta">
+            <p class="card-cat">Bodas</p>
+            <p class="card-title">Luna &amp; Andrés</p>
+            <p class="card-year">2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Normal -->
+      <div class="video-card">
+        <span class="card-index">04</span>
+        <video autoplay loop muted playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" type="video/mp4" />
+        </video>
+        <div class="card-overlay">
+          <div class="card-meta">
+            <p class="card-cat">Eventos</p>
+            <p class="card-title">Summit Creativo 2024</p>
+            <p class="card-year">2024</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Normal -->
+      <div class="video-card">
+        <span class="card-index">05</span>
+        <video autoplay loop muted playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
+        </video>
+        <div class="card-overlay">
+          <div class="card-meta">
+            <p class="card-cat">Videoclip</p>
+            <p class="card-title">Sombras — Dir. Cut</p>
+            <p class="card-year">2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FULL WIDTH — cinemascope -->
+      <div class="video-card full">
+        <span class="card-index">06</span>
+        <video autoplay loop muted playsinline>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4" type="video/mp4" />
+        </video>
+        <div class="card-overlay">
+          <div class="card-meta">
+            <p class="card-cat">Corporativo</p>
+            <p class="card-title">TechVerde — Identidad de Marca</p>
+            <p class="card-year">2024</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SOBRE MÍ
+  ══════════════════════════════════════ -->
+  <section id="sobre-mi">
+    <span class="about-eyebrow">Sobre mí</span>
+    <p class="about-statement">
+      Hago películas.<br>
+      <span class="muted">No videos.</span>
+    </p>
+    <p class="about-body">
+      Con más de 8 años detrás de la cámara he creado contenido para marcas de lujo,
+      documentales sociales, artistas musicales y parejas que buscan inmortalizar
+      sus momentos más importantes. Mi enfoque es simple: la imagen al servicio
+      de la emoción, nunca al revés.
+    </p>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Años</div>
+      </div>
+      <div>
+        <div class="stat-num">120</div>
+        <div class="stat-label">Proyectos</div>
+      </div>
+      <div>
+        <div class="stat-num">14</div>
+        <div class="stat-label">Países</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACTO
+  ══════════════════════════════════════ -->
+  <section id="contacto">
+    <span class="contact-eyebrow">¿Tienes un proyecto en mente?</span>
+    <a class="contact-email" href="mailto:hola@sofiamarinfilm.com">
+      hola@sofiamarinfilm.com
+    </a>
+    <div class="contact-footer">
+      <nav class="social-row" aria-label="Redes sociales">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Vimeo</a>
+        <a href="#" target="_blank" rel="noopener">YouTube</a>
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+      <p class="copyright">
+        © 2026 Sofia Marín Film<br>
+        Madrid, España
+      </p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
