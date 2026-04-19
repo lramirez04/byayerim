@@ -259,10 +259,13 @@
     /* Sección sobre-mí en blanco */
     #sobre-mi { background: #fff; }
 
-    /* Sección trabajo transparente — deja ver el hero-desktop.jpg de fondo */
-    #trabajo { background: transparent; }
+    /* Sección trabajo: naranja con desenfoque gaussiano y 20% opacidad */
+    #trabajo {
+      background: rgba(167, 101, 0, 0.20);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
 
-    /* Textos del section-bar sobre la imagen de fondo */
     #trabajo .section-label-text {
       color: rgba(255,255,255,0.75);
     }
