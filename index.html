@@ -922,18 +922,30 @@
         .map(w => `<span class="word">${w}</span>`)
         .join(' ');
 
-      const wordObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            aboutBody.querySelectorAll('.word').forEach((span, i) => {
-              setTimeout(() => span.classList.add('visible'), i * 35);
-            });
-            wordObserver.unobserve(entry.target);
+      const spans = Array.from(aboutBody.querySelectorAll('.word'));
+
+      function updateWords() {
+        const rect = aboutBody.getBoundingClientRect();
+        const vh   = window.innerHeight;
+
+        // Empieza cuando el párrafo entra por abajo, termina cuando llega al 20% superior
+        const start    = vh;
+        const end      = vh * 0.2;
+        const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+
+        const visibleCount = Math.round(progress * spans.length);
+
+        spans.forEach((span, i) => {
+          if (i < visibleCount) {
+            span.classList.add('visible');
+          } else {
+            span.classList.remove('visible');
           }
         });
-      }, { threshold: 0.15 });
+      }
 
-      wordObserver.observe(aboutBody);
+      window.addEventListener('scroll', updateWords, { passive: true });
+      updateWords(); // estado inicial
     }
 
     /* ── YouTube facade: clic carga el iframe con autoplay ── */
