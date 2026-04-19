@@ -56,6 +56,9 @@
       height: 48px;
       opacity: 0.15;
     }
+    .cursor.is-on-card {
+      background: #a76500;
+    }
 
     /* ═══════════════════════════════════════
        NAV — ultra-thin fixed strip
@@ -849,6 +852,12 @@
     hoverTargets.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+    });
+
+    // Color naranja solo al pasar por los video cards
+    document.querySelectorAll('.video-card').forEach(card => {
+      card.addEventListener('mouseenter', () => cursor.classList.add('is-on-card'));
+      card.addEventListener('mouseleave', () => cursor.classList.remove('is-on-card'));
     });
 
     /* ── IntersectionObserver: play/pause videos off-screen ── */
