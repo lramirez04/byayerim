@@ -472,11 +472,11 @@
     }
 
     .about-eyebrow {
-      font-size: 0.6rem;
-      font-weight: 400;
+      font-size: 0.85rem;
+      font-weight: 500;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(0,0,0,0.35);
+      color: #a76500;
       display: block;
       margin-bottom: 2rem;
     }
@@ -500,6 +500,24 @@
       color: rgba(0,0,0,0.82);
       line-height: 1.5;
       text-align: justify;
+    }
+
+    .about-email-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.85rem 2rem;
+      background: #111;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .about-email-btn:hover {
+      background: #333;
+      transform: translateY(-2px);
     }
 
 
@@ -664,11 +682,7 @@
 
       <!-- Columna derecha: texto -->
       <div class="about-text">
-        <span class="about-eyebrow">Sobre mí</span>
-        <p class="about-statement">
-          Hago películas.<br>
-          <span class="muted">No videos.</span>
-        </p>
+        <span class="about-eyebrow">Who I Am!</span>
         <p class="about-body">
           A dedicated Visual Creative and Video Editor driven by the art of storytelling
           and the power of imagery. With a comprehensive background in film production—from
@@ -676,6 +690,7 @@
           suite. I specialize in crafting compelling digital experiences where visual
           aesthetics and rhythmic precision converge to engage and inspire the viewer
         </p>
+        <a class="about-email-btn" href="mailto:email@email.com">Email me →</a>
       </div>
 
     </div>
