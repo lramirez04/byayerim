@@ -451,9 +451,13 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.6fr;
+      grid-template-columns: 0.55fr 2fr;
       gap: 4rem;
       align-items: start;
+    }
+
+    .about-image {
+      padding-top: 3rem; /* Empuja la foto al nivel de la primera línea del body */
     }
 
     .about-image img {
@@ -495,10 +499,11 @@
     }
 
     .about-body {
-      font-size: clamp(1rem, 2vw, 1.55rem);
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.2rem, 2.4vw, 1.85rem);
       font-weight: 500;
       color: rgba(0,0,0,0.82);
-      line-height: 1.5;
+      line-height: 1.45;
       text-align: justify;
     }
 
