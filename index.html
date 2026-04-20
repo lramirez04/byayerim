@@ -78,27 +78,31 @@
       text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
-      mix-blend-mode: difference;
+      transition: color 0.3s ease;
     }
 
     .nav-right {
       display: flex;
       gap: 2.5rem;
       align-items: center;
-      mix-blend-mode: difference;
     }
 
     .nav-right a {
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--dim);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.3s ease;
     }
 
     .nav-right a:hover { color: var(--white); }
+
+    /* Nav sobre fondo blanco */
+    nav.nav--light .nav-logo { color: #a76500; }
+    nav.nav--light .nav-right a { color: rgba(167,101,0,0.55); }
+    nav.nav--light .nav-right a:hover { color: #a76500; }
 
     /* Thin horizontal rule under nav (barely visible) */
     nav::after {
@@ -126,7 +130,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('hero-desktop.jpg');
+      background-image: url('assets/hero-desktop.jpg');
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
@@ -134,7 +138,7 @@
 
     @media (max-width: 640px) {
       .hero-bg {
-        background-image: url('hero-mobile.jpg');
+        background-image: url('assets/hero-mobile.jpg');
         background-position: center center;
       }
     }
@@ -782,7 +786,7 @@
 
       <!-- Columna izquierda: foto -->
       <div class="about-image">
-        <img src="about-photo.jpg" alt="Ayerim Parra" />
+        <img src="assets/about-photo.jpg" alt="Ayerim Parra" />
       </div>
 
       <!-- Columna derecha: texto -->
@@ -927,7 +931,7 @@
 
     <!-- Fila principal: foto + tagline + píldora email -->
     <div class="contact-layout">
-      <img class="contact-photo" src="about-photo.jpg" alt="Ayerim Parra" />
+      <img class="contact-photo" src="assets/about-photo.jpg" alt="Ayerim Parra" />
       <p class="contact-tagline">Creemos algo<br>extraordinario juntos.</p>
       <a class="contact-pill" href="mailto:hola@ayerimparra.com">
         <span>hola<span class="at">@</span>ayerimparra.com</span>
@@ -938,12 +942,10 @@
     <div class="contact-footer">
       <nav class="social-row" aria-label="Redes sociales">
         <a href="#" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">Vimeo</a>
-        <a href="#" target="_blank" rel="noopener">YouTube</a>
         <a href="#" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
       <p class="copyright">
-        © 2026 Ayerim Parra · Madrid, España
+        © 2026 Ayerim Parra · Venezuela
       </p>
     </div>
 
@@ -971,6 +973,23 @@
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
+
+    /* ── Nav color: naranja sobre fondo blanco, blanco en el resto ── */
+    const navEl     = document.querySelector('nav');
+    const sobreMiEl = document.getElementById('sobre-mi');
+
+    function updateNavColor() {
+      if (!navEl || !sobreMiEl) return;
+      const navH      = navEl.offsetHeight;
+      const scrollY   = window.scrollY;
+      const sobreTop  = sobreMiEl.offsetTop;
+      const sobreBot  = sobreTop + sobreMiEl.offsetHeight;
+      const isOverWhite = (scrollY + navH >= sobreTop) && (scrollY < sobreBot);
+      navEl.classList.toggle('nav--light', isOverWhite);
+    }
+
+    window.addEventListener('scroll', updateNavColor, { passive: true });
+    updateNavColor();
 
     // Expand on hoverable elements
     const hoverTargets = document.querySelectorAll('a, .video-card, button');

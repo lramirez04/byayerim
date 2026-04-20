@@ -41,23 +41,20 @@
     ═══════════════════════════════════════ */
     .cursor {
       position: fixed;
-      width: 8px;
-      height: 8px;
-      background: var(--white);
+      width: 10px;
+      height: 10px;
+      background: #a76500;
+      border: 1.5px solid rgba(255,255,255,0.85);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, opacity 0.2s;
-      mix-blend-mode: difference;
+      transition: width 0.2s, height 0.2s, opacity 0.2s, background 0.2s;
     }
     .cursor.is-hovering {
       width: 48px;
       height: 48px;
-      opacity: 0.15;
-    }
-    .cursor.is-on-card {
-      background: #a76500;
+      opacity: 0.35;
     }
 
     /* ═══════════════════════════════════════
@@ -81,27 +78,31 @@
       text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
-      mix-blend-mode: difference;
+      transition: color 0.3s ease;
     }
 
     .nav-right {
       display: flex;
       gap: 2.5rem;
       align-items: center;
-      mix-blend-mode: difference;
     }
 
     .nav-right a {
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--dim);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.3s ease;
     }
 
     .nav-right a:hover { color: var(--white); }
+
+    /* Nav sobre fondo blanco */
+    nav.nav--light .nav-logo { color: #a76500; }
+    nav.nav--light .nav-right a { color: rgba(167,101,0,0.55); }
+    nav.nav--light .nav-right a:hover { color: #a76500; }
 
     /* Thin horizontal rule under nav (barely visible) */
     nav::after {
@@ -259,18 +260,15 @@
     /* Sección sobre-mí en blanco */
     #sobre-mi { background: #fff; }
 
-    /* Sección trabajo en naranja */
-    #trabajo { background: #a76500; }
-
-    /* Textos del section-bar sobre fondo naranja */
-    #trabajo .section-label-text {
-      color: rgba(0,0,0,0.55);
+    /* Sección trabajo: naranja con desenfoque gaussiano y 20% opacidad */
+    #trabajo {
+      background: rgba(167, 101, 0, 0.20);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
-    /* Textos del card overlay — siguen en claro ya que van sobre gradiente oscuro del video */
-    /* card-index va sobre la miniatura del video, se mantiene legible */
-    #trabajo .card-index {
-      color: rgba(0,0,0,0.35);
+    #trabajo .section-label-text {
+      color: rgba(255,255,255,0.75);
     }
 
     /* ═══════════════════════════════════════
@@ -521,22 +519,56 @@
       text-align: justify;
     }
 
+    /* ── Word reveal on scroll ── */
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .word.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .about-email-btn {
       display: inline-block;
       margin-top: 2rem;
       padding: 0.85rem 2rem;
-      background: #111;
-      color: #fff;
+      background: #e8e8e8;
+      color: #111;
       font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-decoration: none;
       border-radius: 999px;
-      transition: background 0.25s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 0 0 0 transparent;
+      transition: box-shadow 0.4s ease, color 0.15s ease;
+    }
+
+    /* Relleno negro de izquierda a derecha */
+    .about-email-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #111;
+      border-radius: inherit;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 0;
+    }
+    .about-email-btn:hover::before { transform: scaleX(1); }
+
+    .about-email-btn span {
+      position: relative;
+      z-index: 1;
     }
     .about-email-btn:hover {
-      background: #333;
-      transform: translateY(-2px);
+      color: #fff;
     }
 
 
@@ -544,47 +576,101 @@
        CONTACT
     ═══════════════════════════════════════ */
     #contacto {
-      padding: 6rem 2rem 7rem;
+      padding: 5rem 3.5rem 6rem;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
 
-    .contact-eyebrow {
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      display: block;
-      margin-bottom: 2rem;
+    .contact-layout {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
     }
 
-    .contact-email {
+    /* Foto pequeña */
+    .contact-photo {
+      width: 110px;
+      height: 140px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 10px;
+      flex-shrink: 0;
       display: block;
-      font-size: clamp(1.6rem, 5.5vw, 5rem);
+    }
+
+    /* Tagline junto a la foto */
+    .contact-tagline {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.55;
+      max-width: 180px;
+      flex-shrink: 0;
+    }
+
+    /* Píldora oscura con el email */
+    .contact-pill {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      border-radius: 999px;
+      padding: 2.2rem 3rem;
+      font-size: clamp(1.4rem, 3.2vw, 3.8rem);
       font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 0.95;
+      letter-spacing: -0.04em;
       color: var(--white);
       text-decoration: none;
-      margin-bottom: 4rem;
-      /* Underline that grows from left */
+      white-space: nowrap;
       position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 0 0 0 transparent;
+      transition: box-shadow 0.4s ease;
     }
 
-    .contact-email::after {
+    /* Barra naranja que se llena de izquierda a derecha */
+    .contact-pill::before {
       content: '';
       position: absolute;
-      bottom: -4px; left: 0;
-      width: 0%; height: 1px;
-      background: var(--white);
-      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      inset: 0;
+      background: #a76500;
+      border-radius: inherit;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.55s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 0;
     }
-    .contact-email:hover::after { width: 100%; }
+    .contact-pill:hover::before { transform: scaleX(1); }
+    .contact-pill:hover {
+      box-shadow:
+        0 0 0 1px rgba(167, 101, 0, 0.6),
+        0 0 18px 4px rgba(167, 101, 0, 0.45),
+        0 0 50px 12px rgba(167, 101, 0, 0.25),
+        0 0 90px 24px rgba(167, 101, 0, 0.12);
+      transition: box-shadow 0.4s ease;
+    }
 
+    /* El texto queda por encima del relleno */
+    .contact-pill span,
+    .contact-pill .at {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-pill .at { color: #a76500; }
+    .contact-pill:hover .at { color: var(--white); transition: color 0.3s ease 0.15s; }
+
+    .contact-pill .at {
+      color: #a76500;
+    }
+
+    /* Footer: redes + copyright */
     .contact-footer {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      margin-top: 3rem;
     }
 
     .social-row {
@@ -638,7 +724,11 @@
       .about-stats { flex-direction: column; gap: 2rem; }
 
       #contacto { padding: 4rem 1.25rem 5rem; }
-      .contact-footer { flex-direction: column; gap: 2.5rem; align-items: flex-start; }
+      .contact-layout { flex-wrap: wrap; gap: 1.5rem; }
+      .contact-photo { width: 80px; height: 100px; }
+      .contact-tagline { display: none; }
+      .contact-pill { flex: 1; min-width: 0; padding: 1.5rem 1.5rem; font-size: clamp(1rem, 5vw, 1.8rem); }
+      .contact-footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; margin-top: 2rem; }
       .copyright { text-align: left; }
 
       .section-bar { padding: 4rem 1.25rem 1.5rem; }
@@ -709,7 +799,7 @@
           suite. I specialize in crafting compelling digital experiences where visual
           aesthetics and rhythmic precision converge to engage and inspire the viewer
         </p>
-        <a class="about-email-btn" href="mailto:email@email.com">Email me →</a>
+        <a class="about-email-btn" href="mailto:email@email.com"><span>Email me →</span></a>
       </div>
 
     </div>
@@ -838,22 +928,27 @@
        CONTACTO
   ══════════════════════════════════════ -->
   <section id="contacto">
-    <span class="contact-eyebrow">¿Tienes un proyecto en mente?</span>
-    <a class="contact-email" href="mailto:hola@sofiamarinfilm.com">
-      hola@sofiamarinfilm.com
-    </a>
+
+    <!-- Fila principal: foto + tagline + píldora email -->
+    <div class="contact-layout">
+      <img class="contact-photo" src="about-photo.jpg" alt="Ayerim Parra" />
+      <p class="contact-tagline">Creemos algo<br>extraordinario juntos.</p>
+      <a class="contact-pill" href="mailto:hola@ayerimparra.com">
+        <span>hola<span class="at">@</span>ayerimparra.com</span>
+      </a>
+    </div>
+
+    <!-- Footer: redes + copyright -->
     <div class="contact-footer">
       <nav class="social-row" aria-label="Redes sociales">
         <a href="#" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">Vimeo</a>
-        <a href="#" target="_blank" rel="noopener">YouTube</a>
         <a href="#" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
       <p class="copyright">
-        © 2026 Sofia Marín Film<br>
-        Madrid, España
+        © 2026 Ayerim Parra · Venezuela
       </p>
     </div>
+
   </section>
 
   <!-- ══════════════════════════════════════
@@ -879,7 +974,77 @@
     }
     animateCursor();
 
+    /* ── Nav color: naranja sobre fondo blanco, blanco en el resto ── */
+    const navEl     = document.querySelector('nav');
+    const sobreMiEl = document.getElementById('sobre-mi');
+
+    function updateNavColor() {
+      if (!navEl || !sobreMiEl) return;
+      const navH      = navEl.offsetHeight;
+      const scrollY   = window.scrollY;
+      const sobreTop  = sobreMiEl.offsetTop;
+      const sobreBot  = sobreTop + sobreMiEl.offsetHeight;
+      const isOverWhite = (scrollY + navH >= sobreTop) && (scrollY < sobreBot);
+      navEl.classList.toggle('nav--light', isOverWhite);
+    }
+
+    window.addEventListener('scroll', updateNavColor, { passive: true });
+    updateNavColor();
+
     // Expand on hoverable elements
     const hoverTargets = document.querySelectorAll('a, .video-card, button');
     hoverTargets.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('
+      el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+    });
+
+
+    /* ── IntersectionObserver: play/pause videos off-screen ── */
+    const videoCards = document.querySelectorAll('.video-card video');
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.isIntersecting
+          ? entry.target.play().catch(() => {})
+          : entry.target.pause();
+      });
+    }, { threshold: 0.1 });
+
+    videoCards.forEach(v => videoObserver.observe(v));
+
+    /* ── Word reveal on scroll — about-body ── */
+    const aboutBody = document.querySelector('.about-body');
+    if (aboutBody) {
+      const words = aboutBody.innerText.trim().split(/\s+/);
+      aboutBody.innerHTML = words
+        .map(w => `<span class="word">${w}</span>`)
+        .join(' ');
+
+      const spans = Array.from(aboutBody.querySelectorAll('.word'));
+
+      function updateWords() {
+        const rect = aboutBody.getBoundingClientRect();
+        const vh   = window.innerHeight;
+
+        // Empieza cuando el párrafo entra por abajo, termina cuando llega al 20% superior
+        const start    = vh;
+        const end      = vh * 0.2;
+        const progress = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+
+        const visibleCount = Math.round(progress * spans.length);
+
+        spans.forEach((span, i) => {
+          if (i < visibleCount) {
+            span.classList.add('visible');
+          } else {
+            span.classList.remove('visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateWords, { passive: true });
+      updateWords(); // estado inicial
+    }
+
+    /* ── YouTube facade: clic carga el iframe con autoplay ── */
+    document.
