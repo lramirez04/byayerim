@@ -534,40 +534,18 @@
       display: inline-block;
       margin-top: 2rem;
       padding: 0.85rem 2rem;
-      background: #e8e8e8;
-      color: #111;
+      background: #111;
+      color: #fff;
       font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       text-decoration: none;
       border-radius: 999px;
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      box-shadow: 0 0 0 0 transparent;
-      transition: box-shadow 0.4s ease, color 0.15s ease;
-    }
-
-    /* Relleno negro de izquierda a derecha */
-    .about-email-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: #111;
-      border-radius: inherit;
-      transform: scaleX(0);
-      transform-origin: left center;
-      transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-      z-index: 0;
-    }
-    .about-email-btn:hover::before { transform: scaleX(1); }
-
-    .about-email-btn span {
-      position: relative;
-      z-index: 1;
+      transition: background 0.25s, transform 0.2s;
     }
     .about-email-btn:hover {
-      color: #fff;
+      background: #333;
+      transform: translateY(-2px);
     }
 
 
@@ -798,7 +776,7 @@
           suite. I specialize in crafting compelling digital experiences where visual
           aesthetics and rhythmic precision converge to engage and inspire the viewer
         </p>
-        <a class="about-email-btn" href="mailto:email@email.com"><span>Email me →</span></a>
+        <a class="about-email-btn" href="mailto:email@email.com">Email me →</a>
       </div>
 
     </div>
