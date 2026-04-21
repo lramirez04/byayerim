@@ -814,4 +814,10 @@ nav::after {
 .social-row a {
   font-size: 0.65rem;
   font-weight: 400;
-  l
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.social-row a:hover { color: var(--white); }
