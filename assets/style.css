@@ -744,6 +744,7 @@ nav::after {
   letter-spacing: 0.1em;
   text-align: right;
   line-height: 1.8;
+  text-transform: uppercase;
 }
 
 /* ═══════════════════════════════════════
