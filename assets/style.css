@@ -94,7 +94,7 @@ nav.nav--light .nav-social .social-sep { color: rgba(167,101,0,0.4); }
   text-transform: uppercase;
   color: var(--white);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .nav-logo:hover,
@@ -109,7 +109,7 @@ nav.nav--light .nav-social .social-sep { color: rgba(167,101,0,0.4); }
 }
 
 /* Nav sobre fondo blanco */
-nav.nav--light .nav-logo,
+nav.nav--light .nav-logo { opacity: 0; }
 nav.nav--light .nav-right a,
 nav.nav--light .nav-social a { color: #a76500; }
 
