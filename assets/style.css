@@ -713,9 +713,8 @@ nav::after {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100%;
-  gap: 1rem;
+  grid-template-columns: auto auto auto;
+  gap: 3rem;
 }
 .skills-col {
   display: flex;
