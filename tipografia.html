@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tipografía · Ayerim Parra Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #111;
+      --surface:  #1a1a1a;
+      --border:   rgba(255,255,255,0.07);
+      --label:    rgba(255,255,255,0.35);
+      --gold:     #ebac1a;
+      --orange:   #a76500;
+      --white:    #ffffff;
+      --font:     'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      padding: 3rem 2rem 6rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1 {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      font-size: 0.6rem;
+      color: var(--label);
+      letter-spacing: 0.1em;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Section heading ── */
+    .section-heading {
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.5rem 0 0.5rem 1rem;
+      border-left: 2px solid var(--gold);
+      margin: 3rem 0 1rem;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: grid;
+      grid-template-columns: 200px 1fr 220px;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-info {}
+    .card-name {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--label);
+      margin-bottom: 0.3rem;
+    }
+    .card-context {
+      font-size: 0.5rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    .card-preview {
+      overflow: hidden;
+    }
+
+    .card-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .spec {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .spec-key {
+      font-size: 0.45rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+      min-width: 70px;
+    }
+    .spec-val {
+      font-size: 0.55rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Dark / Light preview backgrounds ── */
+    .bg-dark  { background: transparent; }
+    .bg-light { background: #f0f0f0; border-radius: 4px; padding: 0.5rem 0.8rem; }
+    .bg-black { background: #000; border-radius: 4px; padding: 0.5rem 0.8rem; }
+
+    /* ══════════════════════════
+       PREVIEW STYLES — replicating the actual site CSS
+    ══════════════════════════ */
+
+    /* NAV */
+    .preview-nav {
+      font-family: var(--font);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .preview-nav-light {
+      font-family: var(--font);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a76500;
+    }
+
+    /* HERO */
+    .preview-hero-name {
+      font-family: var(--font);
+      font-size: clamp(1.8rem, 6vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 0.88;
+      color: #ffffff;
+    }
+
+    /* SCROLL INDICATOR */
+    .preview-scroll {
+      font-family: var(--font);
+      font-size: 0.52rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* SECTION MARQUEE */
+    .preview-marquee {
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    /* SECTION TAGLINE */
+    .preview-tagline {
+      font-family: var(--font);
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+      color: #ffffff;
+    }
+
+    /* CARD CAT */
+    .preview-card-cat {
+      font-family: var(--font);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* CARD TITLE */
+    .preview-card-title {
+      font-family: var(--font);
+      font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: #ffffff;
+    }
+
+    /* CARD ROLE / YEAR */
+    .preview-card-role {
+      font-family: var(--font);
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* WHO I AM marquee */
+    .preview-whoi {
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #000;
+    }
+
+    /* ABOUT BODY */
+    .preview-about-body {
+      font-family: var(--font);
+      font-size: clamp(1rem, 2.8vw, 1.4rem);
+      font-weight: 600;
+      color: #000;
+      line-height: 1.4;
+    }
+
+    /* BIO LABEL */
+    .preview-bio-label {
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #ebac1a;
+    }
+
+    /* BIO BODY */
+    .preview-bio-body {
+      font-family: var(--font);
+      font-size: clamp(0.82rem, 1.1vw, 1.05rem);
+      font-weight: 500;
+      color: #666;
+      line-height: 1.55;
+    }
+
+    /* BIO BODY STRONG */
+    .preview-bio-strong {
+      font-family: var(--font);
+      font-size: clamp(0.82rem, 1.1vw, 1.05rem);
+      font-weight: 700;
+      color: #444;
+      line-height: 1.55;
+    }
+
+    /* CONTACT TAGLINE */
+    .preview-contact-tagline {
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+
+    /* CONTACT PILL */
+    .preview-contact-pill {
+      font-family: var(--font);
+      font-size: clamp(1rem, 3.2vw, 2rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+    }
+
+    /* COPYRIGHT */
+    .preview-copyright {
+      font-family: var(--font);
+      font-size: 0.55rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* EMAIL BTN */
+    .preview-email-btn {
+      font-family: var(--font);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tipografía · Ayerim Parra Portfolio</h1>
+  <p class="subtitle">Fuente global: Inter · Todos los tamaños en rem / clamp() · Generado 2026</p>
+
+  <!-- ═══════════ NAV ═══════════ -->
+  <div class="section-heading">Nav</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.nav-logo · .nav-right a · .nav-social a</div>
+      <div class="card-context">Nav — fondo oscuro</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-nav">Ayerim Parra &nbsp;·&nbsp; Work &nbsp;·&nbsp; Instagram</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.68rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">500 (Medium)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.14em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ffffff</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.nav-logo · .nav-right a · .nav-social a</div>
+      <div class="card-context">Nav — fondo blanco (nav--light)</div>
+    </div>
+    <div class="card-preview bg-light">
+      <span class="preview-nav-light">Ayerim Parra &nbsp;·&nbsp; Work &nbsp;·&nbsp; Instagram</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.68rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">500 (Medium)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.14em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#a76500</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <div class="section-heading">Hero</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.hero-name</div>
+      <div class="card-context">Hero — nombre principal</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-hero-name">Ayerim<br>Parra</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(4.5rem, 14vw, 13rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">900 (Black)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">-0.045em</span></div>
+      <div class="spec"><span class="spec-key">Leading</span><span class="spec-val">0.88</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ffffff</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.scroll-indicator span</div>
+      <div class="card-context">Hero — indicador scroll</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-scroll">Scroll</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.52rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">400 (Regular)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.22em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">rgba(255,255,255,0.6)</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SELECTED WORKS ═══════════ -->
+  <div class="section-heading">Selected Works — Barra de sección</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.section-label-track span</div>
+      <div class="card-context">Marquee "Selected Works"</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-marquee">Selected Works</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.85rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">500 (Medium)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.25em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ffffff</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.section-tagline</div>
+      <div class="card-context">Tagline de sección</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-tagline">Make an impact with<br>stories that matters</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(2.25rem, 7vw, 6.5rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">900 (Black)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">-0.045em</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ffffff</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ VIDEO CARDS ═══════════ -->
+  <div class="section-heading">Video Cards</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.card-cat</div>
+      <div class="card-context">Categoría (Short Film, Documentary…)</div>
+    </div>
+    <div class="card-preview bg-black">
+      <span class="preview-card-cat">Short Film</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.55rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">500 (Medium)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.25em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">rgba(255,255,255,0.55)</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.card-title</div>
+      <div class="card-context">Título del video</div>
+    </div>
+    <div class="card-preview bg-black">
+      <span class="preview-card-title">Mireyita</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(0.9rem, 1.8vw, 1.25rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">800 (ExtraBold)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">-0.03em</span></div>
+      <div class="spec"><span class="spec-key">Leading</span><span class="spec-val">1.15</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ffffff</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.card-role · .card-year</div>
+      <div class="card-context">Rol y año en la tarjeta</div>
+    </div>
+    <div class="card-preview bg-black">
+      <span class="preview-card-role">Video Editor &nbsp;&nbsp;&nbsp; 2025</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.6rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">400 (Regular)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.1em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">rgba(255,255,255,0.3)</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <div class="section-heading">About — Who I Am</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.about-eyebrow-track span</div>
+      <div class="card-context">Marquee "Who I Am!"</div>
+    </div>
+    <div class="card-preview bg-light">
+      <span class="preview-whoi">Who I Am!</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.85rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">500 (Medium)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.25em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#000000</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.about-body</div>
+      <div class="card-context">Párrafo principal del About</div>
+    </div>
+    <div class="card-preview bg-light">
+      <span class="preview-about-body">A dedicated Visual Creative and Video Editor driven by the art of storytelling.</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(1.3rem, 2.8vw, 2.1rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">600 (SemiBold)</span></div>
+      <div class="spec"><span class="spec-key">Leading</span><span class="spec-val">1.4</span></div>
+      <div class="spec"><span class="spec-key">Align</span><span class="spec-val">Justify</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#000000</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ BIO SLIDER ═══════════ -->
+  <div class="section-heading">Bio Slider</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.bio-slide-label</div>
+      <div class="card-context">Label de diapositiva (About Me, Skills…)</div>
+    </div>
+    <div class="card-preview bg-light">
+      <span class="preview-bio-label">About Me</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">1rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">700 (Bold)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.2em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ebac1a</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.bio-slide-body</div>
+      <div class="card-context">Cuerpo de texto de diapositiva</div>
+    </div>
+    <div class="card-preview bg-light">
+      <span class="preview-bio-body">Hello! I'm Ayerim, a video editor with a passion for creating stories.</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(0.82rem, 1.1vw, 1.05rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">500 (Medium)</span></div>
+      <div class="spec"><span class="spec-key">Leading</span><span class="spec-val">1.55</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#666666</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.bio-slide-body strong</div>
+      <div class="card-context">Subtítulos dentro del cuerpo (Expertise…)</div>
+    </div>
+    <div class="card-preview bg-light">
+      <span class="preview-bio-strong">Expertise &nbsp;·&nbsp; Creative Tools &nbsp;·&nbsp; AI Tools</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(0.82rem, 1.1vw, 1.05rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">700 (Bold)</span></div>
+      <div class="spec"><span class="spec-key">Leading</span><span class="spec-val">1.55</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#444444</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ CONTACTO ═══════════ -->
+  <div class="section-heading">Contacto</div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.contact-tagline</div>
+      <div class="card-context">Frase de contacto</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-contact-tagline">Let's create something<br>extraordinary together.</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.85rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">400 (Regular)</span></div>
+      <div class="spec"><span class="spec-key">Leading</span><span class="spec-val">1.6</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">rgba(255,255,255,0.45)</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.contact-pill</div>
+      <div class="card-context">Botón de email</div>
+    </div>
+    <div class="card-preview bg-black">
+      <span class="preview-contact-pill">byayerim@gmail.com</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">clamp(1.4rem, 3.2vw, 3.8rem)</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">900 (Black)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">-0.04em</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">#ffffff</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-info">
+      <div class="card-name">.copyright</div>
+      <div class="card-context">Pie de página</div>
+    </div>
+    <div class="card-preview bg-dark">
+      <span class="preview-copyright">© 2026 Ayerim Parra · Venezuela</span>
+    </div>
+    <div class="card-specs">
+      <div class="spec"><span class="spec-key">Tamaño</span><span class="spec-val">0.55rem</span></div>
+      <div class="spec"><span class="spec-key">Peso</span><span class="spec-val">400 (Regular)</span></div>
+      <div class="spec"><span class="spec-key">Tracking</span><span class="spec-val">0.08em</span></div>
+      <div class="spec"><span class="spec-key">Case</span><span class="spec-val">Uppercase</span></div>
+      <div class="spec"><span class="spec-key">Color</span><span class="spec-val">rgba(255,255,255,0.25)</span></div>
+    </div>
+  </div>
+
+</body>
+</html>
