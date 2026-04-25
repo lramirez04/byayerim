@@ -175,7 +175,7 @@ nav::after {
 }
 
 .hero-name {
-  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-size: clamp(4rem, 12vw, 11rem);
   font-weight: 900;
   letter-spacing: -0.045em;
   line-height: 0.88;
